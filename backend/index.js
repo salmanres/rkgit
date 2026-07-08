@@ -4,6 +4,7 @@ const app = express();
 const port = 3500;
 require('./database/mongoose');
 
+
 // middleware - pipeline - req / res pass
 
 app.use(express.json());
