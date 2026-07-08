@@ -33,7 +33,7 @@ function AdminRooms() {
                 <div className='form-container'>
                     <h2>ADD ROOMS DETAILS</h2>
                     <input type='text' placeholder='Category' name="category" onInput={getData} />
-                    <input type='text' placeholder='Capacity' name="capacity" onInput={getData}/>
+                    <input type='number' placeholder='Capacity' name="capacity" onInput={getData}/>
                     <input type='number' placeholder='Price' name='price' onInput={getData}/>
                     <button onClick={addroom}>ADD ROOM</button>
                 </div>
