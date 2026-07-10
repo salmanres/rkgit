@@ -1,17 +1,16 @@
 const express = require('express');
-const { addroom, getroom } = require('../controller/roomsController');
+const { addroom, getroom, deleteroom, roomsbyid, updateroom } = require('../controller/roomsController');
+const { adduser, userlogin } = require('../controller/userController');
 const appRoute = express.Router();
+const verifyToken = require('../middleware/jwt');
 
 appRoute.post('/add-room', addroom);
-appRoute.get('/get-room', getroom);
+appRoute.get('/get-room', verifyToken, getroom);
+appRoute.delete('/delete-room/:id', deleteroom);
+appRoute.get('/roombyid/:id', roomsbyid);
+appRoute.put('/update-room/:id', updateroom);
 
-// app.post('/add-room', async (req, res)=>{
-//     try{
-//         await roomsData.create(req.body);
-//         res.send('room data added successfully');
-//     }catch(err){
-//         res.send('internal server error');
-//     };
-// });
+appRoute.post('/add-user', adduser);
+appRoute.post('/login-user', userlogin);
 
 module.exports = appRoute;

@@ -104,3 +104,32 @@
   margin-top: 30px;
   margin-bottom: 30px;
 }
+
+.mytable{
+  width: 100%;
+}
+
+.mytable th{
+  padding: 10px;
+  background-color: lightblue;
+  text-align: center;
+}
+
+.mytable td{
+  padding: 10px;
+  text-align: center;
+}
+
+.edit-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-container div{
+  width: 400px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
