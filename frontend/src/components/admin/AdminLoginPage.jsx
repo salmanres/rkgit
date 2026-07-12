@@ -18,7 +18,7 @@ function AdminLoginPage() {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('http://localhost:3500/login-user', data);
+            const response = await axios.post('https://rkgit.onrender.com/login-user', data);
             console.log(response.data);
             alert(response.data.message);
             navigate('/admin');

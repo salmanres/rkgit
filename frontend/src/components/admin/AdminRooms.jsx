@@ -20,7 +20,7 @@ function AdminRooms() {
 
     const addroom = async () => {
         try{
-            const response = await axios.post('http://localhost:3500/add-room', data);
+            const response = await axios.post('https://rkgit.onrender.com/add-room', data);
             alert(response.data);
         }catch(err){
             alert('internal server error')

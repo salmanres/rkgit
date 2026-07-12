@@ -20,7 +20,7 @@ function AdminEditRoom() {
 
     const updateroom = async (req, res) => {
         try {
-            const response = await axios.put(`http://localhost:3500/update-room/${id}`, data);
+            const response = await axios.put(`https://rkgit.onrender.com/update-room/${id}`, data);
             alert(response.data);
             navigate('/admin');
         } catch (err) {

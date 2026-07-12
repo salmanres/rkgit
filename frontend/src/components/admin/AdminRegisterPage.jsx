@@ -15,7 +15,7 @@ function AdminRegisterPage() {
 
     const adduser = async () => {
         try{
-            const response = await axios.post('http://localhost:3500/add-user', data);
+            const response = await axios.post('https://rkgit.onrender.com/add-user', data);
             alert(response.data);
         }catch(err){
             console.log(err);

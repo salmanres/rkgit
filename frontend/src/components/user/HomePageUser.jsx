@@ -9,7 +9,7 @@ function HomePageUser() {
 
     const getdata = async () => {
         try {
-            const response = await axios.get('http://localhost:3500/get-room');
+            const response = await axios.get('https://rkgit.onrender.com/get-room');
             console.log(response.data);
             setdata(response.data);
         } catch (err) {

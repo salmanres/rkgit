@@ -15,7 +15,7 @@ function AdminHomePage() {
     const getdata = async () => {
         const token = Cookies.get('authToken');
         try {
-            const response = await axios.get('http://localhost:3500/get-room', {
+            const response = await axios.get('https://rkgit.onrender.com/get-room', {
                 headers :{
                     Authorization : `Bearer ${token}`
                 }
@@ -28,7 +28,7 @@ function AdminHomePage() {
 
     const deleteroom = async (id) => {
         try{
-            const response = await axios.delete(`http://localhost:3500/delete-room/${id}`);
+            const response = await axios.delete(`https://rkgit.onrender.com/delete-room/${id}`);
             alert(response.data);
             getdata();
         }catch(err){
