@@ -22,7 +22,7 @@ function AdminLoginPage() {
             console.log(response.data);
             alert(response.data.message);
             navigate('/admin');
-            Cookies.set('authToken', response.data.token, {expires:1});
+            Cookies.set('authToken', response.data.token, { expires: 1 });
         } catch (err) {
             console.log(err);
         };
@@ -30,9 +30,18 @@ function AdminLoginPage() {
 
     return (
         <Fragment>
-            <input type='email' placeholder='enter email' name='email' onInput={getdata} />
-            <input type='password' placeholder='enter password' name='password' onInput={getdata} />
-            <button onClick={handleLogin}>login</button>
+            <h3 className='bg-warning p-3 text-center'>
+                ADMIN LOGIN PAGE
+            </h3>
+            <div className='container mt-5'>
+                <div className='row d-flex justify-content-center'>
+                    <div className='col-lg-4'>
+                        <input className='form-control mb-2' type='email' placeholder='enter email' name='email' onInput={getdata} />
+                        <input className='form-control mb-2' type='password' placeholder='enter password' name='password' onInput={getdata} />
+                        <button className='btn btn-warning w-100' onClick={handleLogin}>LOGIN</button>
+                    </div>
+                </div>
+            </div>
         </Fragment>
     )
 }

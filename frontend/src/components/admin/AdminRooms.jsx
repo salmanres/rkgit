@@ -21,7 +21,7 @@ function AdminRooms() {
     };
 
     const getFile = (event) => {
-        setFile(event.target.file[0]);
+        setFile(event.target.files[0]);
     };
 
     const addroom = async () => {
