@@ -7,7 +7,7 @@ function HomePageUser() {
 
     const [data, setdata] = useState();
 
-    const getdata = async () => {
+    async function getdata() {
         try {
             const response = await axios.get('https://rkgit.onrender.com/get-room');
             console.log(response.data);
@@ -15,7 +15,7 @@ function HomePageUser() {
         } catch (err) {
             console.log(err);
         };
-    };
+    }
 
     useEffect(() => {
         getdata();

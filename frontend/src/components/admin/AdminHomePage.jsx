@@ -48,7 +48,7 @@ function AdminHomePage() {
     return (
         <Fragment>
 
-            <table border={1} cellSpacing={0} className='mytable'>
+            <table border={1} cellSpacing={0} className='table table-striped'>
                 <thead>
                     <tr>
                         <th>SR</th>
@@ -67,8 +67,8 @@ function AdminHomePage() {
                                 <td>{item.capacity}</td>
                                 <td>{item.price}</td>
                                 <td>
-                                    <button onClick={()=>editroom(item._id)}><FaEdit /></button>
-                                    <button onClick={()=>deleteroom(item._id)}><MdDelete /></button>
+                                    <button className='btn btn-warning btn-sm mx-2'  onClick={()=>editroom(item._id)}><FaEdit /></button>
+                                    <button className='btn btn-danger btn-sm' onClick={()=>deleteroom(item._id)}><MdDelete /></button>
                                 </td>
                             </tr>
                         ))

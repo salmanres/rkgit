@@ -1,13 +1,22 @@
 const roomsData = require("../schema/roomSchema");
 
-const addroom = async (req, res)=>{
-    try{
-        await roomsData.create(req.body);
-        res.send('room data added successfully');
-    }catch(err){
-        console.log(err);
-        res.send('internal server error');
-    };
+const addroom = async (req, res) => { 
+    try { 
+        // 1. Create a copy of the request body fields (roomNumber, category, capacity, price)
+        const roomInfo = { ...req.body }; 
+         
+        // 2. If a file was uploaded, save its URL path to the database 
+        if (req.file) { 
+            roomInfo.image = `/uploads/${req.file.filename}`; 
+        } 
+ 
+        // 3. Save to MongoDB 
+        await roomsData.create(roomInfo); 
+        res.send('room data added successfully'); 
+    } catch (err) { 
+        console.log(err); 
+        res.send('internal server error'); 
+    } 
 };
 
 const getroom = async (req, res) => {

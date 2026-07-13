@@ -3,8 +3,9 @@ const { addroom, getroom, deleteroom, roomsbyid, updateroom } = require('../cont
 const { adduser, userlogin } = require('../controller/userController');
 const appRoute = express.Router();
 const verifyToken = require('../middleware/jwt');
+const upload = require('../middleware/upload');
 
-appRoute.post('/add-room', addroom);
+appRoute.post('/add-room', upload.single('image'), addroom);
 appRoute.get('/get-room', verifyToken, getroom);
 appRoute.delete('/delete-room/:id', deleteroom);
 appRoute.get('/roombyid/:id', roomsbyid);

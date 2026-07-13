@@ -11,6 +11,7 @@ const cookieParser = require('cookie-parser');
 // middleware - pipeline - req / res pass
 
 app.use(express.json());
+app.use('/uploads', express.static('uploads')); // statically exposed
 app.use(cors());
 app.use(appRoute);
 app.use(cookieParser());
