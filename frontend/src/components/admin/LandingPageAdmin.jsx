@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Link, Navigate, Outlet } from 'react-router-dom';
+import { Link, Navigate, Outlet, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
 // 1. default
@@ -8,9 +8,17 @@ import Cookies from 'js-cookie';
 function LandingPageAdmin() {
 
     const token = Cookies.get('authToken');
+    const navigate = useNavigate();
+
 
     if (!token) {
         return <Navigate to="/admin/login" replace />
+    }
+
+    const logout = () => {
+        // localStorage.removeItem('authToken');
+        Cookies.remove('authToken');
+        navigate('/admin/login');
     }
 
     return (
@@ -38,6 +46,7 @@ function LandingPageAdmin() {
                             </li>
                         </ul>
                     </div>
+                    <button className='btn btn-warning btn-sm' onClick={logout}>LogOut</button>
                 </div>
             </nav>
 
