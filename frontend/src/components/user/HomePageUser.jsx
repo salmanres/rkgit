@@ -96,7 +96,7 @@ function HomePageUser() {
 
             <h1 className='myheading'>Our Gallery</h1>
 
-            <div className='cotnainer'>
+            <div className='cotnainer-fluid overflow-hidden'>
                 <div className='row'>
                     <div className="col-lg-3 col-md-6 col-sm-12 card p-0 ">
                         <img src="https://cdn.sanity.io/images/ocl5w36p/ihcl_prod/51a4d4bd19f512f51baa8e20c1a9200d9bef826a-3365x3565.jpg?w=480&auto=format&dpr=2" className="col-lg-3 card-img-top" alt="..." />
