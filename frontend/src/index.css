@@ -4,22 +4,6 @@
   box-sizing: border-box;
 }
 
-.navbar {
-  width: 100%;
-  height: 70px;
-  background-color: navy;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.navbar a {
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: 600;
-}
-
 .form-container {
   /* border: 1px solid gray; */
   display: flex;
@@ -82,13 +66,13 @@
   height: 200px;
 }
 
-.card-container div h3{
+.card-container div h3 {
   text-align: center;
   font-size: 25px;
   padding: 5px;
 }
 
-.card-container div label{
+.card-container div label {
   font-size: 16px;
   font-weight: 600;
   padding-left: 10px;
@@ -98,38 +82,46 @@
 
 .myheading {
   text-align: center;
-  background-color: navy;
+  background-color: #F8F9FA;
   padding: 10px;
-  color: white;
-  margin-top: 30px;
   margin-bottom: 30px;
 }
 
-.mytable{
+.mytable {
   width: 100%;
 }
 
-.mytable th{
+.mytable th {
   padding: 10px;
   background-color: lightblue;
   text-align: center;
 }
 
-.mytable td{
+.mytable td {
   padding: 10px;
   text-align: center;
 }
 
-.edit-container{
+.edit-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.edit-container div{
+.edit-container div {
   width: 400px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 
+.booking-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.booking-form button {
+  width: 200px;
+}
