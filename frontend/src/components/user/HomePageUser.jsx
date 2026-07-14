@@ -63,10 +63,10 @@ function HomePageUser() {
                     <div className='col-lg-3 col-md-6 col-sm-12 booking-form'>
                         <label className='mb-3'>Select Category</label>
                         <select className='form-control'>
-                            <option>Suite</option>
-                            <option>Deluxe</option>
-                            <option>King</option>
-                            <option>Standard</option>
+                            <option>Category 1</option>
+                            <option>Category 2</option>
+                            <option>Category 3</option>
+                            <option>Category 4</option>
                         </select>
                     </div>
                     <div className='col-xl-12 booking-form mt-4'>

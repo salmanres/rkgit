@@ -17,7 +17,7 @@ function LandingPageUser() {
                 <Link className='nav-link' to="/">HOME</Link>
               </li>
               <li className="nav-item">
-                <Link className='nav-link' to="/">ROOMS AND SUITES</Link>
+                <Link className='nav-link' to="/room-info">ROOMS AND SUITES</Link>
               </li>
               <li className="nav-item">
                 <Link className='nav-link' to="/">MY BOOKINGS</Link>
@@ -32,7 +32,7 @@ function LandingPageUser() {
                 <Link className='nav-link' to="/">CONTACT US</Link>
               </li>
               <li className="nav-item">
-                <Link className='nav-link' to="/register">register</Link>
+                <Link className='nav-link' to="/register">LOGIN</Link>
               </li>
             </ul>
           </div>
