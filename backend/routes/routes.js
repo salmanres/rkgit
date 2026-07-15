@@ -4,6 +4,7 @@ const { adduser, userlogin, addmobileuser } = require('../controller/userControl
 const appRoute = express.Router();
 const verifyToken = require('../middleware/jwt');
 const upload = require('../middleware/upload');
+const { createBooking, bookingbymobile } = require('../controller/bookingController');
 
 appRoute.post('/add-room', upload.single('image'), addroom);
 appRoute.get('/get-room', getroom);
@@ -14,5 +15,8 @@ appRoute.put('/update-room/:id', updateroom);
 appRoute.post('/add-user', adduser);
 appRoute.post('/login-user', userlogin);
 appRoute.post('/add-mobile-user', addmobileuser);
+
+appRoute.post('/create-booking', createBooking);
+appRoute.get('/booking-by-mobile/:mobile', bookingbymobile);
 
 module.exports = appRoute;

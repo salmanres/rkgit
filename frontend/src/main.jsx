@@ -16,6 +16,7 @@ import AdminRegisterPage from './components/admin/AdminRegisterPage.jsx';
 import AdminLoginPage from './components/admin/AdminLoginPage.jsx';
 import ReactForm from './components/user/ReactForm.jsx';
 import RoomsInfo from './components/user/RoomsInfo.jsx';
+import MyBookingsUser from './components/user/MyBookingsUser.jsx';
 
 
 // root 
@@ -40,6 +41,7 @@ createRoot(document.getElementById('root')).render(
           <Route path='' element={<HomePageUser />} />
           <Route path='/register' element={<ReactForm />} />
           <Route path='/room-info' element={<RoomsInfo />} />
+          <Route path='/my-bookings' element={<MyBookingsUser />} />
         </Route>
       </Routes>
     </BrowserRouter>

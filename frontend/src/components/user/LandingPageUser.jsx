@@ -20,7 +20,7 @@ function LandingPageUser() {
                 <Link className='nav-link' to="/room-info">ROOMS AND SUITES</Link>
               </li>
               <li className="nav-item">
-                <Link className='nav-link' to="/">MY BOOKINGS</Link>
+                <Link className='nav-link' to="/my-bookings">MY BOOKINGS</Link>
               </li>
                <li className="nav-item">
                 <Link className='nav-link' to="/">DINING</Link>

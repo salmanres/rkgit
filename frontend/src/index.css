@@ -109,3 +109,9 @@
 .booking-form button {
   width: 200px;
 }
+
+.login-container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}

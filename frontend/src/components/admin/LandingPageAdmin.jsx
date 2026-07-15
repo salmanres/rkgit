@@ -11,9 +11,9 @@ function LandingPageAdmin() {
     const navigate = useNavigate();
 
 
-    if (!token) {
-        return <Navigate to="/admin/login" replace />
-    }
+    // if (!token) {
+    //     return <Navigate to="/admin/login" replace />
+    // }
 
     const logout = () => {
         // localStorage.removeItem('authToken');
