@@ -17,6 +17,7 @@ import AdminLoginPage from './components/admin/AdminLoginPage.jsx';
 import ReactForm from './components/user/ReactForm.jsx';
 import RoomsInfo from './components/user/RoomsInfo.jsx';
 import MyBookingsUser from './components/user/MyBookingsUser.jsx';
+import AdminNotes from './components/admin/AdminNotes.jsx';
 
 
 // root 
@@ -32,6 +33,7 @@ createRoot(document.getElementById('root')).render(
           <Route path='/admin/rooms' element={<AdminRooms />} />
           <Route path='/admin/edit-rooms/:id' element={<AdminEditRoom />} />
           <Route path='/admin/settings' element={<AdminRegisterPage />} />
+          <Route path='/admin/notes' element={<AdminNotes />} />
 
         </Route>
 

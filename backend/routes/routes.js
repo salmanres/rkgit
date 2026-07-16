@@ -4,7 +4,9 @@ const { adduser, userlogin, addmobileuser } = require('../controller/userControl
 const appRoute = express.Router();
 const verifyToken = require('../middleware/jwt');
 const upload = require('../middleware/upload');
-const { createBooking, bookingbymobile } = require('../controller/bookingController');
+const { createBooking, bookingbymobile, allbookings } = require('../controller/bookingController');
+// Import note controller functions
+const { createNote, getNotes, deleteNote } = require('../controller/noteController');
 
 appRoute.post('/add-room', upload.single('image'), addroom);
 appRoute.get('/get-room', getroom);
@@ -18,5 +20,12 @@ appRoute.post('/add-mobile-user', addmobileuser);
 
 appRoute.post('/create-booking', createBooking);
 appRoute.get('/booking-by-mobile/:mobile', bookingbymobile);
+
+appRoute.get('/all-bookings', allbookings);
+
+// Note endpoints
+appRoute.post('/add-note', createNote);
+appRoute.get('/get-notes', getNotes);
+appRoute.delete('/delete-note/:id', deleteNote);
 
 module.exports = appRoute;

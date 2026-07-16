@@ -1,13 +1,23 @@
 const bookingdata = require("../schema/bookingSchema");
 
 const createBooking = async (req, res) => {
-    try{
-        await bookingdata.create(req.body);
+    try {
+        const newBooking = await bookingdata.create(req.body);
+        
+        // Emit socket notification to all connected admins/users
+        // we are emitting an event
+        if (req.io) {
+            req.io.emit('newBookingNotification', {
+                message: `New booking received from ${newBooking.name}!`,
+                booking: newBooking
+            });
+        }
+        
         res.send('booking successful!');
-    }catch(e){
+    } catch (e) {
         console.log(e);
         res.send('internal server error');
-    };
+    }
 };
 
 const bookingbymobile = async (req, res) => {
@@ -19,6 +29,16 @@ const bookingbymobile = async (req, res) => {
         console.log(e);
         res.send('internal server error');
     }
-}
+};
 
-module.exports = {createBooking, bookingbymobile};
+const allbookings = async (req, res) => {
+    try{
+        const data = await bookingdata.find();
+        res.send(data);
+    }catch(err){
+        console.log(err);
+        res.send('internal server error');
+    };
+};
+
+module.exports = {createBooking, bookingbymobile, allbookings};

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Fragment, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 function MyBookingsUser() {
 
@@ -13,16 +14,17 @@ function MyBookingsUser() {
     const getdata = async () => {
         try {
             if (userinfo) {
-                const {mobile} = userinfo;
+                const { mobile } = userinfo;
                 const response = await axios.get(`http://localhost:3500/booking-by-mobile/${mobile}`);
                 console.log(response.data);
+                setdata(response.data);
             };
         } catch (err) {
             console.log(err);
         };
     };
 
-    useEffect(()=>{
+    useEffect(() => {
         getdata();
     }, []);
 
@@ -30,7 +32,21 @@ function MyBookingsUser() {
         <Fragment>
             {
                 userinfo ?
-                    <p>user info</p>
+                    <div>
+                        {
+                            data && data.map((item) => (
+                                <div className="card m-3">
+                                    <div className="card-body">
+                                        <h5 className="card-title">{item.category}</h5>
+                                        <h6 className="card-subtitle mb-2 text-body-secondary">{item.name} - {item.mobile}</h6>
+                                        <p className="card-text">Checkin - {item.checkin} | Checkout - {item.checkout}</p>
+                                        <p>Guest Count: {item.guestcount}</p>
+                                        <button className='btn btn-danger' onClick={()=>toast.error('cancellation not available!')}>Cancel Booking</button>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
                     :
                     <div className='container'>
                         <div className='row d-flex justify-content-center'>
@@ -42,6 +58,8 @@ function MyBookingsUser() {
                     </div>
 
             }
+
+            <ToastContainer/>
         </Fragment>
     )
 }

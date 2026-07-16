@@ -1,25 +1,41 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { Link, Navigate, Outlet, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import { io } from 'socket.io-client';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-// 1. default
-// 2. name import
+// Initialize socket connection to backend server
+const socket = io('http://localhost:3500');
 
 function LandingPageAdmin() {
 
     const token = Cookies.get('authToken');
     const navigate = useNavigate();
 
-
-    // if (!token) {
-    //     return <Navigate to="/admin/login" replace />
-    // }
-
     const logout = () => {
-        // localStorage.removeItem('authToken');
         Cookies.remove('authToken');
         navigate('/admin/login');
     }
+
+    // Set up socket event listener for real-time notifications
+    useEffect(() => {
+        socket.on('newBookingNotification', (data) => {
+            toast.info(data.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
+        });
+
+        // Cleanup connection listeners on component unmount
+        return () => {
+            socket.off('newBookingNotification');
+        };
+    }, []);
 
     return (
         <Fragment>
@@ -33,7 +49,7 @@ function LandingPageAdmin() {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <Link className='nav-link' to="/ADMIN">HOME</Link>
+                                <Link className='nav-link' to="/admin">HOME</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className='nav-link' to="/admin/bookings">BOOKINGS</Link>
@@ -44,19 +60,17 @@ function LandingPageAdmin() {
                             <li className="nav-item">
                                 <Link className='nav-link' to="/admin/settings">ADD USER</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className='nav-link' to="/admin/notes">NOTES</Link>
+                            </li>
                         </ul>
                     </div>
                     <button className='btn btn-warning btn-sm' onClick={logout}>LogOut</button>
                 </div>
             </nav>
 
-            {/* <div className='navbar'>
-                <Link to="/admin">HOME</Link>
-                <Link to="/admin/bookings">BOOKINGS</Link>
-                <Link to="/admin/rooms">ADD ROOMS</Link>
-                <Link to="/admin/settings">SETTINGS</Link>
-            </div> */}
             <Outlet />
+            <ToastContainer />
         </Fragment>
     )
 };
