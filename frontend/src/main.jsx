@@ -47,7 +47,6 @@ createRoot(document.getElementById('root')).render(
           <Route path='/admin/rooms' element={<AdminRooms />} />
           <Route path='/admin/edit-rooms/:id' element={<AdminEditRoom />} />
           <Route path='/admin/settings' element={<AdminRegisterPage />} />
-          <Route path='/admin/notes' element={<AdminNotes />} />
 
         </Route>
 

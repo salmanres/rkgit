@@ -60,9 +60,6 @@ function LandingPageAdmin() {
                             <li className="nav-item">
                                 <Link className='nav-link' to="/admin/settings">ADD USER</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className='nav-link' to="/admin/notes">NOTES</Link>
-                            </li>
                         </ul>
                     </div>
                     <button className='btn btn-warning btn-sm' onClick={logout}>LogOut</button>
