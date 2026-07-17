@@ -18,6 +18,8 @@ import ReactForm from './components/user/ReactForm.jsx';
 import RoomsInfo from './components/user/RoomsInfo.jsx';
 import MyBookingsUser from './components/user/MyBookingsUser.jsx';
 import AdminNotes from './components/admin/AdminNotes.jsx';
+import { Provider } from 'react-redux';
+import { store } from './components/redux/Store.js';
 
 // lazily load
 
@@ -28,37 +30,39 @@ const AdminBookings = React.lazy(() => import('./components/admin/AdminBookings.
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path='/admin' element={<LandingPageAdmin />} >
-          {/* nested routing */}
-          <Route path='' element={<AdminHomePage />} />
-          <Route path='/admin/bookings' element={
-            <Suspense fallback={
-              <div className="text-center mt-5">
-                <div className="spinner-border" role="status">
-                  <span className="visually-hidden">Loading...</span>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/admin' element={<LandingPageAdmin />} >
+            {/* nested routing */}
+            <Route path='' element={<AdminHomePage />} />
+            <Route path='/admin/bookings' element={
+              <Suspense fallback={
+                <div className="text-center mt-5">
+                  <div className="spinner-border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </div>
                 </div>
-              </div>
-            }>
-              <AdminBookings />
-            </Suspense>
-          } />
-          <Route path='/admin/rooms' element={<AdminRooms />} />
-          <Route path='/admin/edit-rooms/:id' element={<AdminEditRoom />} />
-          <Route path='/admin/settings' element={<AdminRegisterPage />} />
+              }>
+                <AdminBookings />
+              </Suspense>
+            } />
+            <Route path='/admin/rooms' element={<AdminRooms />} />
+            <Route path='/admin/edit-rooms/:id' element={<AdminEditRoom />} />
+            <Route path='/admin/settings' element={<AdminRegisterPage />} />
 
-        </Route>
+          </Route>
 
-        <Route path='/admin/login' element={<AdminLoginPage />} />
+          <Route path='/admin/login' element={<AdminLoginPage />} />
 
-        <Route path='/' element={<LandingPageUser />}>
-          <Route path='' element={<HomePageUser />} />
-          <Route path='/register' element={<ReactForm />} />
-          <Route path='/room-info' element={<RoomsInfo />} />
-          <Route path='/my-bookings' element={<MyBookingsUser />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+          <Route path='/' element={<LandingPageUser />}>
+            <Route path='' element={<HomePageUser />} />
+            <Route path='/register' element={<ReactForm />} />
+            <Route path='/room-info' element={<RoomsInfo />} />
+            <Route path='/my-bookings' element={<MyBookingsUser />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   </StrictMode>,
 )

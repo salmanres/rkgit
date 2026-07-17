@@ -1,11 +1,13 @@
 import axios from 'axios';
 import React, { Fragment, useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
 function MyBookingsUser() {
 
     const userinfo = JSON.parse(localStorage.getItem('userData'));
+    const count = useSelector((state) => state.counter.value);
 
     const navigate = useNavigate();
 
@@ -33,6 +35,7 @@ function MyBookingsUser() {
             {
                 userinfo ?
                     <div>
+                        <h1>{count}</h1>
                         {
                             data && data.map((item) => (
                                 <div className="card m-3">
@@ -41,7 +44,7 @@ function MyBookingsUser() {
                                         <h6 className="card-subtitle mb-2 text-body-secondary">{item.name} - {item.mobile}</h6>
                                         <p className="card-text">Checkin - {item.checkin} | Checkout - {item.checkout}</p>
                                         <p>Guest Count: {item.guestcount}</p>
-                                        <button className='btn btn-danger' onClick={()=>toast.error('cancellation not available!')}>Cancel Booking</button>
+                                        <button className='btn btn-danger' onClick={() => toast.error('cancellation not available!')}>Cancel Booking</button>
                                     </div>
                                 </div>
                             ))
@@ -59,7 +62,7 @@ function MyBookingsUser() {
 
             }
 
-            <ToastContainer/>
+            <ToastContainer />
         </Fragment>
     )
 }

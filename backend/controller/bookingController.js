@@ -5,14 +5,13 @@ const createBooking = async (req, res) => {
         const newBooking = await bookingdata.create(req.body);
         
         // Emit socket notification to all connected admins/users
-        // we are emitting an event
+        // here we are emitting an event
         if (req.io) {
             req.io.emit('newBookingNotification', {
                 message: `New booking received from ${newBooking.name}!`,
                 booking: newBooking
             });
         }
-        
         res.send('booking successful!');
     } catch (e) {
         console.log(e);

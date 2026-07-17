@@ -1,11 +1,15 @@
 import React, { Fragment, useEffect } from 'react'
 import { Link, Navigate, Outlet, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+
 import { io } from 'socket.io-client';
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // Initialize socket connection to backend server
+
+
 const socket = io('http://localhost:3500');
 
 function LandingPageAdmin() {
@@ -19,6 +23,8 @@ function LandingPageAdmin() {
     }
 
     // Set up socket event listener for real-time notifications
+
+    
     useEffect(() => {
         socket.on('newBookingNotification', (data) => {
             toast.info(data.message, {
@@ -30,7 +36,6 @@ function LandingPageAdmin() {
                 draggable: true,
             });
         });
-
         // Cleanup connection listeners on component unmount
         return () => {
             socket.off('newBookingNotification');

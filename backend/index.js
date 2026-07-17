@@ -24,6 +24,8 @@ const io = new Server(server, {
 });
 
 // Setup socket connection listener
+
+
 io.on('connection', (socket) => {
     console.log(`Client connected: ${socket.id}`);
     socket.on('disconnect', () => {
@@ -45,6 +47,8 @@ app.use(appRoute);
 app.use(cookieParser());
 
 // Listen on the HTTP server instead of the Express app
+
+
 server.listen(port, () => {
     console.log('server is running on port no 3500..');
 });

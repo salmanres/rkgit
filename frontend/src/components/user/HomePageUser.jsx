@@ -2,10 +2,14 @@ import axios from 'axios';
 import React, { Fragment } from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { increment } from '../redux/CounterSlice';
 
 function HomePageUser() {
 
     const [data, setdata] = useState();
+    const count = useSelector((state)=>state.counter.value);
+    const dispatch = useDispatch();
 
     async function getdata() {
         try {
@@ -23,6 +27,16 @@ function HomePageUser() {
 
     return (
         <Fragment>
+
+            <div className='conainer m-5'>
+                <div className='row'>
+                    <div className='col-lg-12'>
+                        <h1>{count}</h1>
+                        <button className='btn btn-warning me-5' onClick={()=>dispatch(increment())}>increment</button>
+                        <button className='btn btn-warning'>decrement</button>
+                    </div>
+                </div>
+            </div>
 
             <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel">
                 <div className="carousel-inner">
